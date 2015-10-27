@@ -1,0 +1,66 @@
+.hidden {
+	visibility: hidden;
+}
+
+form > div,
+form > h1 {
+	display: inline-block;
+}
+
+#maze div {
+	font-size: 1px;
+}
+
+#maze > .row > div {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+.room {
+	width: 15px;
+	height: 15px;
+}
+
+.wall {
+	background-color: black;
+	width: 3px;
+	height: 3px;
+}
+
+.wall.ns,
+.door.ns {
+	width: 15px;
+	height: 3px;
+}
+
+.wall.ew,
+.door.ew {
+	width: 3px;
+	height: 15px;
+}
+
+.room,
+.door {
+	background-color: gray;
+}
+
+.room.position {
+	background-color: lightgreen;
+}
+
+.room.end {
+	background-color: cyan;
+}
+
+.room.position.end {
+	background-color: yellow;
+}
+
+#game-over {
+
+}
+
+#rating {
+	font-size: 24px;
+}

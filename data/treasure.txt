@@ -1,0 +1,30 @@
+; treasure.data.txt
+;
+; Treasure data file.
+;
+; Stores all of the possible treasure that can be found in a maze.
+;
+; Each line requires the following comma-delimited format:
+;
+; <treasureName>,<points>,<expiration>,<frequency>
+;
+; Where <treasureName> is any non-HTML string (the images for the
+; treasure will be retrieved from
+; www/img/treasure/icon/<treasureName>.png and
+; www/img/treasure/detail/<treasureName>.png,
+; with all non-alphanumeric characters being converted to dashes
+; and all text changing to lowercase), <points> are the amount
+; of points to assign to the player for picking it up, <expiration>
+; is an integer giving the number of steps a treasure will disappear
+; in (0 for forever), and <frequency> is the frequency of the treasure
+; appearing relative to all other treasures (so for treasures A, B,
+; and C with freq. 1, 2, and 2, A has a 20% chance and B & C have
+; a 40% chance).
+;
+; Empty lines, lines prefixed with semicolons or hash marks, and
+; invalid data lines are ignored.
+
+; Common flower
+Flower,1,40,20
+; Uncommon star
+Star,5,10,3
