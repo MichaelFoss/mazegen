@@ -1,3 +1,7 @@
+# Apache
+error_log
+access_log
+
 # IntelliJ
 .idea
 
