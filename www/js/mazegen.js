@@ -22,6 +22,29 @@ window.maze = {
 		// Bind arrow keys for movement
 		$(document).keydown(window.maze.captureKey);
 		window.maze.treasures = $maze.find('div[data-treasure]').length;
+		// Bind swiping for movement
+		$('body').swipe({
+			swipe: function(event, direction) {
+				if (window.maze.treasures == 0) {
+					return;
+				}
+				event.preventDefault();
+				switch (direction) {
+					case 'left':
+						window.maze.moveLeft();
+						break;
+					case 'right':
+						window.maze.moveRight();
+						break;
+					case 'up':
+						window.maze.moveUp();
+						break;
+					case 'down':
+						window.maze.moveDown();
+						break;
+				}
+			}
+		});
 	},
 
 	captureKey: function(e) {

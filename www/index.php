@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: text/html; charset=utf-8');
+
 require_once('../config.php');
 require_once('../lib/maze.php');
 
@@ -13,6 +15,7 @@ if (isset($_POST['width']) && is_int((int)$_POST['width'] * 1) && is_int((int)$_
 <html>
 <head>
 	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/jquery.touchSwipe.min.js"></script>
 	<script src="js/mazegen.js"></script>
 	<link rel="stylesheet" href="css/mazegen.css" />
 </head>
