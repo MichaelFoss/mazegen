@@ -10,6 +10,10 @@ if (isset($_POST['width']) && is_int((int)$_POST['width'] * 1) && is_int((int)$_
 	$height = $_POST['height'];
 	$maze = new Maze($width, $height);
 }
+else {
+	$width = DEFAULT_MAZE_WIDTH;
+	$height = DEFAULT_MAZE_HEIGHT;
+}
 
 ?><!doctype html>
 <html>
@@ -20,16 +24,18 @@ if (isset($_POST['width']) && is_int((int)$_POST['width'] * 1) && is_int((int)$_
 	<link rel="stylesheet" href="css/mazegen.css" />
 </head>
 <body>
+	<h1>Maze Generator</h1>
 	<form method="post"<?=isset($_POST['width']) ? ' class="hidden"' : ''; ?>>
-		<h1>Maze Generator</h1>
-		<div>
-			<label for="width">Width:</label>
-			<input type="number" id="width" name="width"<?=isset($width) ? ' value="' . $width . '"' : ''; ?> />
-		</div>
-		<div>
-			<label for="height">Height:</label>
-			<input type="number" id="height" name="height"<?=isset($height) ? ' value="' . $height . '"' : ''; ?> />
-		</div>
+		<?php foreach (array('width', 'height') as $dimension): ?>
+			<div>
+				<label for="<?=$dimension; ?>"><?=ucwords($dimension); ?>:</label>
+				<select id="<?=$dimension; ?>" name="<?=$dimension; ?>">
+				<?php for ($i = 1; $i <= 15; $i++): ?>
+					<option value="<?=$i; ?>"<?=$$dimension == $i ? ' selected="selected"' : ''; ?>><?=$i; ?></option>
+				<?php endfor; ?>
+				</select>
+			</div>
+		<?php endforeach; ?>
 		<div>
 			<input type="submit" value="Generate!" />
 		</div>
@@ -53,5 +59,17 @@ if (isset($_POST['width']) && is_int((int)$_POST['width'] * 1) && is_int((int)$_
 		echo $maze->toHTML();
 	}
 	?>
+	<nav>
+		<div>
+			<button id="move-up">&#x2191;</button>
+		</div>
+		<div>
+			<button id="move-left">&#x2190;</button>
+			<button id="move-right">&#x2192;</button>
+		</div>
+		<div>
+			<button id="move-down">&#x2193;</button>
+		</div>
+	</nav>
 </body>
 </html>

@@ -2,8 +2,11 @@
 	visibility: hidden;
 }
 
-form > div,
-form > h1 {
+form input[type='number'] {
+	width: 35px;
+}
+
+form > div {
 	display: inline-block;
 }
 
@@ -57,10 +60,48 @@ form > h1 {
 	background-color: yellow;
 }
 
+#status {
+	margin-bottom: 20px;
+}
+
 #game-over {
 
 }
 
+#game-over > h2 {
+	margin: 10px 0;
+}
+
+#game-over > div {
+	border-radius: 5px;
+	border: 1px solid #000;
+	display: inline;
+	padding: 10px;
+}
+
 #rating {
 	font-size: 24px;
+}
+
+nav {
+	margin-top: 20px;
+}
+
+nav > div {
+	margin-top: 5px;
+}
+
+nav > div > button {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 3px;
+	background-color: #eee;
+	border: 1px solid #ccc;
+}
+
+#move-up,
+#move-down,
+#move-right {
+	margin-left: 35px;
 }

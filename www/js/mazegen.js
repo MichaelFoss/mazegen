@@ -22,12 +22,11 @@ window.maze = {
 		// Bind arrow keys for movement
 		$(document).keydown(window.maze.captureKey);
 		window.maze.treasures = $maze.find('div[data-treasure]').length;
+		// Bind arrow buttons for movement
+		$('nav > div > button').on('click', window.maze.captureMoveButton);
 		// Bind swiping for movement
 		$('body').swipe({
 			swipe: function(event, direction) {
-				if (window.maze.treasures == 0) {
-					return;
-				}
 				event.preventDefault();
 				switch (direction) {
 					case 'left':
@@ -47,10 +46,30 @@ window.maze = {
 		});
 	},
 
-	captureKey: function(e) {
-		if (window.maze.treasures == 0) {
-			return;
+	captureMoveButton: function(e) {
+		switch ($(this).attr('id')) {
+			case 'move-left': // left
+				window.maze.moveLeft();
+				break;
+
+			case 'move-up': // up
+				window.maze.moveUp();
+				break;
+
+			case 'move-right': // right
+				window.maze.moveRight();
+				break;
+
+			case 'move-down': // down
+				window.maze.moveDown();
+				break;
+
+			default:
+				return; // exit this handler for other keys
 		}
+	},
+
+	captureKey: function(e) {
 		switch(e.which) {
 			case 37: // left
 				window.maze.moveLeft();
@@ -117,6 +136,9 @@ window.maze = {
 	},
 
 	moveUp: function() {
+		if (window.maze.treasures == 0) {
+			return;
+		}
 		var $room = $('.room-' + window.maze.x + '-' + window.maze.y);
 		if (window.maze.y >= 1 && $room.data('exits').indexOf('n') !== -1) {
 			$room.removeClass('position');
@@ -127,6 +149,9 @@ window.maze = {
 	},
 
 	moveDown: function() {
+		if (window.maze.treasures == 0) {
+			return;
+		}
 		var $room = $('.room-' + window.maze.x + '-' + window.maze.y);
 		if (window.maze.y + 1 < window.maze.height && $room.data('exits').indexOf('s') !== -1) {
 			$room.removeClass('position');
@@ -137,6 +162,9 @@ window.maze = {
 	},
 
 	moveLeft: function() {
+		if (window.maze.treasures == 0) {
+			return;
+		}
 		var $room = $('.room-' + window.maze.x + '-' + window.maze.y);
 		if (window.maze.x >= 1 && $room.data('exits').indexOf('w') !== -1) {
 			$room.removeClass('position');
@@ -147,6 +175,9 @@ window.maze = {
 	},
 
 	moveRight: function() {
+		if (window.maze.treasures == 0) {
+			return;
+		}
 		var $room = $('.room-' + window.maze.x + '-' + window.maze.y);
 		if (window.maze.x + 1 < window.maze.width && $room.data('exits').indexOf('e') !== -1) {
 			$room.removeClass('position');
