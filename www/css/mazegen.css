@@ -14,6 +14,14 @@ form > div {
 	font-size: 1px;
 }
 
+#maze > .row.thin {
+	height: 3px;
+}
+
+#maze > .row.thick {
+	height: 15px;
+}
+
 #maze > .row > div {
 	display: inline-block;
 	margin: 0;

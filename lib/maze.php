@@ -146,14 +146,14 @@ class Maze {
 	 */
 	public function toHTML() {
 		$s = '';
-		$s .= sprintf('<div id="maze" data-x="%d" data-y="%d" data-width="%d" data-height="%d">' . PHP_EOL,
+		$s .= sprintf('<div id="maze" data-x="%d" data-y="%d" data-width="%d" data-height="%d">',
 			$this->position->getX(),
 			$this->position->getY(),
 			$this->width,
 			$this->height
 		);
 		for ($y = 0; $y < $this->height; $y++) {
-			$s .= '<div class="row">';
+			$s .= '<div class="row thin">';
 			for ($x = 0; $x < $this->width; $x++) {
 				$s .= '<div class="wall"></div>';
 				if ($this->rooms[$x][$y]->isExit(Direction::NORTH)) {
@@ -164,8 +164,8 @@ class Maze {
 				}
 			}
 			$s .= '<div class="wall"></div>';
-			$s .= '</div>' . PHP_EOL;
-			$s .= '<div class="row">';
+			$s .= '</div>';
+			$s .= '<div class="row thick">';
 			for ($x = 0; $x < $this->width; $x++) {
 				if ($this->rooms[$x][$y]->isExit(Direction::WEST)) {
 					$s .= '<div class="door ew"></div>';
@@ -190,13 +190,13 @@ class Maze {
 				}
 				$s .= '></div>';
 			}
-			$s .= '<div class="wall ew"></div>' . PHP_EOL;
-			$s .= '</div>' . PHP_EOL;
+			$s .= '<div class="wall ew"></div>';
+			$s .= '</div>';
 		}
-		$s .= '<div class="row">';
-		$s .= str_repeat('<div class="wall"></div><div class="wall ns"></div>', $this->width) . '<div class="wall"></div>' . PHP_EOL;
-		$s .= '</div>' . PHP_EOL;
-		$s .= '</div>' . PHP_EOL;
+		$s .= '<div class="row thin">';
+		$s .= str_repeat('<div class="wall"></div><div class="wall ns"></div>', $this->width) . '<div class="wall"></div>';
+		$s .= '</div>';
+		$s .= '</div>';
 		return $s;
 	}
 

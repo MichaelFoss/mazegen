@@ -30,7 +30,7 @@ else {
 			<div>
 				<label for="<?=$dimension; ?>"><?=ucwords($dimension); ?>:</label>
 				<select id="<?=$dimension; ?>" name="<?=$dimension; ?>">
-				<?php for ($i = 1; $i <= 15; $i++): ?>
+				<?php for ($i = 2; $i <= 15; $i++): ?>
 					<option value="<?=$i; ?>"<?=$$dimension == $i ? ' selected="selected"' : ''; ?>><?=$i; ?></option>
 				<?php endfor; ?>
 				</select>
